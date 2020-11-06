@@ -42,7 +42,7 @@ public class AnalyticsCounter {
 		FileWriter writer = new FileWriter (resourcesPath + "result.out");
 		writer.write("headache: " + headacheCount + "\n");
 		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
+		writer.write("dilated pupils: " + pupilCount + "\n");
 		writer.close();
 	}
 }
