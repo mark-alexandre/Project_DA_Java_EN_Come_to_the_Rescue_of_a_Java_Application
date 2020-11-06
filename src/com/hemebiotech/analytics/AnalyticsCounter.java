@@ -31,7 +31,7 @@ public class AnalyticsCounter {
 			else if (line.equals("rash")) {
 				rashCount++;
 			}
-			else if (line.contains("pupils")) {
+			else if (line.contains("dilated pupils")) {
 				pupilCount++;
 			}
 
