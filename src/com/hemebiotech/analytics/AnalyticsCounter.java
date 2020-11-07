@@ -47,7 +47,9 @@ public class AnalyticsCounter {
 
 		SymptomsReader symptomsObject = new SymptomsReader();
 		ArrayList<String> symptoms = symptomsObject.getSymptoms(filePath);
-		TreeMap<String, Integer> occurrencesObject = symptomsObject.countFrequencies(symptoms);
-		symptomsObject.displayCountFrequencies(occurrencesObject);
+
+		SymptomsWriter writerObject = new SymptomsWriter();
+		TreeMap<String, Integer> occurrencesObject = writerObject.countFrequencies(symptoms);
+		writerObject.displayCountFrequencies(occurrencesObject);
 	}
 }
