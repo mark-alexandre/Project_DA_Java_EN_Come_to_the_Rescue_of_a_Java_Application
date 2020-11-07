@@ -6,17 +6,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Simple brute force implementation
+ * SymptomsReader class combines a set of methods which will fetch data of a file.
  */
-public class SymptomsReader implements ISymptomsReader {
+public class SymptomsReader {
 
-    @Override
-    public ArrayList<String> getSymptoms(String filepath) {
+    /**
+     * Get symptoms in an ArrayList.
+     *
+     * @param filePath String
+     * @return ArrayList<String>
+     */
+    public ArrayList<String> getSymptoms(String filePath) {
         ArrayList<String> result = new ArrayList<String>();
 
-        if (filepath != null) {
+        if (filePath != null) {
             try {
-                BufferedReader file = new BufferedReader(new FileReader(filepath));
+                BufferedReader file = new BufferedReader(new FileReader(filePath));
                 String line;
 
                 while ((line = file.readLine()) != null) {
