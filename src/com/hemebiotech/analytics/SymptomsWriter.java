@@ -39,7 +39,7 @@ public class SymptomsWriter {
      *
      * @param filePath String
      * @param treeMap TreeMap<String, Integer>
-     * @throws IOException e
+     * @throws IOException Signals that an I/O exception of some sort has occurred
      */
     public void writeResult(String filePath, TreeMap<String, Integer> treeMap) throws IOException {
         FileWriter writer = new FileWriter(filePath);
