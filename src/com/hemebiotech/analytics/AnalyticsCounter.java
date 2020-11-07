@@ -7,10 +7,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
 	private static String resourcesPath = Constants.PROJECT_PATH.getName() + "resources" + File.separator;
@@ -50,7 +47,7 @@ public class AnalyticsCounter {
 
 		SymptomsReader symptomsObject = new SymptomsReader();
 		ArrayList<String> symptoms = symptomsObject.getSymptoms(filePath);
-		//symptoms.forEach(System.out::println);
-		symptomsObject.countFrequencies(symptoms);
+		TreeMap<String, Integer> occurrencesObject = symptomsObject.countFrequencies(symptoms);
+		symptomsObject.displayCountFrequencies(occurrencesObject);
 	}
 }
