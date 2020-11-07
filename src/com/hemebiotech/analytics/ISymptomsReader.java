@@ -8,7 +8,6 @@ import java.util.List;
  * that may contain many duplications
  * 
  * The implementation does not need to order the list
- * 
  */
 public interface ISymptomsReader {
 	/**
@@ -16,5 +15,5 @@ public interface ISymptomsReader {
 	 * 
 	 * @return a raw listing of all Symptoms obtained from a data source, duplicates are possible/probable
 	 */
-	List<String> GetSymptoms ();
+	List<String> getSymptoms(String filepath);
 }

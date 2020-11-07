@@ -6,9 +6,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AnalyticsCounter {
 	private static String resourcesPath = Constants.PROJECT_PATH.getName() + "resources" + File.separator;
+	private static String filePath = resourcesPath + "symptoms.txt";
 	private static int headacheCount = 0;
 	private static int rashCount = 0;
 	private static int pupilCount = 0;
@@ -24,7 +30,6 @@ public class AnalyticsCounter {
 		int i = 0;
 		while ( (line = file.readLine() ) != null) {
 			i++;
-			System.out.println("symptom from file: " + line);
 			if (line.equals("headache")) {
 				headacheCount++;
 			}
@@ -42,5 +47,10 @@ public class AnalyticsCounter {
 		writer.write("rash: " + rashCount + "\n");
 		writer.write("dilated pupils: " + pupilCount + "\n");
 		writer.close();
+
+		SymptomsReader symptomsObject = new SymptomsReader();
+		ArrayList<String> symptoms = symptomsObject.getSymptoms(filePath);
+		//symptoms.forEach(System.out::println);
+		symptomsObject.countFrequencies(symptoms);
 	}
 }
