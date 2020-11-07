@@ -6,7 +6,7 @@
 number of occurrences for each symptom.
 > #### Example :
 > 
-> headache=3
-> high blood pressure=10
-> rash=4
+> headache=3  
+> high blood pressure=10  
+> rash=4  
 >
