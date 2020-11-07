@@ -1,5 +1,7 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech;
 
+import com.hemebiotech.analytics.SymptomsReader;
+import com.hemebiotech.analytics.SymptomsWriter;
 import com.hemebiotech.utils.Constants;
 
 import java.io.File;
