@@ -25,16 +25,20 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
 
-        // Get an ArrayList of all symptoms
-        Analytics parser = new Analytics();
-        ArrayList<String> symptoms = parser.reader(filePath);
+        if(args.length == 0) {
+            // Get an ArrayList of all symptoms
+            Analytics parser = new Analytics();
+            ArrayList<String> symptoms = parser.reader(filePath);
 
-        // Convert the ArrayList into a TreeMap, in order to have unique keys (symptoms) with values representing the
-        // occurrences of the symptoms
-        TreeMap<String, Integer> occurrences = IParser.countFrequencies(symptoms);
+            // Convert the ArrayList into a TreeMap, in order to have unique keys (symptoms) with values representing
+            // the occurrences of the symptoms
+            TreeMap<String, Integer> occurrences = IParser.countFrequencies(symptoms);
 
-        // Write the output into a new file called result.out
-        parser.writer(resultPath, occurrences);
+            // Write the output into a new file called result.out
+            parser.writer(resultPath, occurrences);
+        } else {
+            System.out.println("At this stage, no parameter is required to compile this application!");
+        }
 
     }
 }

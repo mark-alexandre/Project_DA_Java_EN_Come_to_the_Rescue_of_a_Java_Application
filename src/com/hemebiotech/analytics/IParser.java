@@ -1,12 +1,29 @@
 package com.hemebiotech.analytics;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+/**
+ * This interface was implemented in order to manage everything related to data parsing. Because Java 9 and above allows
+ * to use static method, several helpers methods has been directly put here
+ */
 public interface IParser {
+    /**
+     * Reader method
+     *
+     * @param inputPath Either a file path or URL for the input
+     * @return ArrayList<String>
+     */
     ArrayList<String> reader(String inputPath);
+
+    /**
+     * Writer method
+     *
+     * @param outputPath String
+     * @param data TreeMap<String, Integer>
+     * @throws IOException Stack traces
+     */
     void writer(String outputPath, TreeMap<String, Integer> data) throws IOException;
 
     /**

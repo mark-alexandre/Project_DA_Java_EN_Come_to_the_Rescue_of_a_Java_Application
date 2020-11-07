@@ -7,9 +7,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+
+/**
+ * Symptoms analytics dedicated class
+ */
 public class Analytics implements IParser {
     /**
-     * Get symptoms in an ArrayList.
+     * Get symptoms from a file and return an ArrayList of String.
      *
      * @param filePath String
      * @return ArrayList<String>
