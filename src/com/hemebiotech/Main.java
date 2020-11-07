@@ -1,7 +1,7 @@
 package com.hemebiotech;
 
-import com.hemebiotech.analytics.SymptomsReader;
-import com.hemebiotech.analytics.SymptomsWriter;
+import com.hemebiotech.analytics.Analytics;
+import com.hemebiotech.analytics.IParser;
 import com.hemebiotech.utils.Constants;
 
 import java.io.File;
@@ -26,15 +26,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         // Get an ArrayList of all symptoms
-        SymptomsReader symptomsObject = new SymptomsReader();
-        ArrayList<String> symptoms = symptomsObject.getSymptoms(filePath);
+        Analytics parser = new Analytics();
+        ArrayList<String> symptoms = parser.reader(filePath);
 
-        // Convert the ArrayList into a TreeMap
-        SymptomsWriter writerObject = new SymptomsWriter();
-        TreeMap<String, Integer> occurrencesObject = writerObject.countFrequencies(symptoms);
+        // Convert the ArrayList into a TreeMap, in order to have unique keys (symptoms) with values representing the
+        // occurrences of the symptoms
+        TreeMap<String, Integer> occurrences = IParser.countFrequencies(symptoms);
 
         // Write the output into a new file called result.out
-        writerObject.writeResult(resultPath, occurrencesObject);
+        parser.writer(resultPath, occurrences);
 
     }
 }
