@@ -8,12 +8,11 @@ public enum Constants {
 
     private final String name;
 
-    private Constants(String name) {
+    Constants(String name) {
         this.name = name;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 

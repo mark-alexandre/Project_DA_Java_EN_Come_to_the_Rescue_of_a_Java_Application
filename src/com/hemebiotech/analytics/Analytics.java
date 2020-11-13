@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 
@@ -18,8 +20,8 @@ public class Analytics implements IParser {
      * @param filePath String
      * @return ArrayList<String>
      */
-    public ArrayList<String> reader(String filePath) {
-        ArrayList<String> result = new ArrayList<String>();
+    public List<String> reader(String filePath) {
+        List<String> result = new ArrayList<>();
 
         if (filePath != null) {
             try {
@@ -30,7 +32,7 @@ public class Analytics implements IParser {
                     result.add(line);
                 }
                 file.close();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -43,19 +45,22 @@ public class Analytics implements IParser {
      *
      * @param filePath String
      * @param treeMap TreeMap<String, Integer>
-     * @throws IOException Signals that an I/O exception of some sort has occurred
      */
-    public void writer(String filePath, TreeMap<String, Integer> treeMap) throws IOException {
-        FileWriter writer = new FileWriter(filePath);
+    public void writer(String filePath, Map<String, Integer> treeMap) {
 
-        treeMap.forEach((key, value) -> {
-            try {
-                writer.write(key + "=" + value.toString() + "\n");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+        // Try with Resources used, which allows us to declare resources to be used in a try block with the assurance
+        // that the resources will be closed after the execution of that block.
+        try (FileWriter writer = new FileWriter(filePath)) {
+            treeMap.forEach((key, value) -> {
+                try {
+                    writer.write(key + "=" + value.toString() + "\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        writer.close();
     }
 }

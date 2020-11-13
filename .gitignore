@@ -2,3 +2,4 @@
 .idea
 *.iml
 out
+/ressources/result.out
