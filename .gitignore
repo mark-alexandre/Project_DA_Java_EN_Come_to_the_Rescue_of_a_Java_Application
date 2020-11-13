@@ -2,4 +2,4 @@
 .idea
 *.iml
 out
-/ressources/result.out
+resources/result.out
