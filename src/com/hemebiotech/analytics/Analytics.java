@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-
 
 /**
  * Symptoms analytics dedicated class
@@ -23,15 +21,14 @@ public class Analytics implements IParser {
     public List<String> reader(String filePath) {
         List<String> result = new ArrayList<>();
 
+        // Try with Resources used, which allows us to declare resources to be used in a try block with the assurance
+        // that the resources will be closed after the execution of that block.
         if (filePath != null) {
-            try {
-                BufferedReader file = new BufferedReader(new FileReader(filePath));
+            try (BufferedReader file = new BufferedReader(new FileReader(filePath))) {
                 String line;
-
                 while ((line = file.readLine()) != null) {
                     result.add(line);
                 }
-                file.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -44,14 +41,13 @@ public class Analytics implements IParser {
      * Create or update a file from a given TreeMap
      *
      * @param filePath String
-     * @param treeMap TreeMap<String, Integer>
+     * @param data TreeMap<String, Integer>
      */
-    public void writer(String filePath, Map<String, Integer> treeMap) {
+    public void writer(String filePath, Map<String, Integer> data) {
 
-        // Try with Resources used, which allows us to declare resources to be used in a try block with the assurance
-        // that the resources will be closed after the execution of that block.
+        // Try with Resources
         try (FileWriter writer = new FileWriter(filePath)) {
-            treeMap.forEach((key, value) -> {
+            data.forEach((key, value) -> {
                 try {
                     writer.write(key + "=" + value.toString() + "\n");
                 } catch (IOException e) {

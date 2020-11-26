@@ -23,7 +23,7 @@ public class Main {
      * @param args String[] arguments
      * @throws IOException Signals that an I/O exception of some sort has occurred
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         if(args.length == 0) {
             // Get an ArrayList of all symptoms
