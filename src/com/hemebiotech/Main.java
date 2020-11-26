@@ -2,10 +2,9 @@ package com.hemebiotech;
 
 import com.hemebiotech.analytics.Analytics;
 import com.hemebiotech.utils.Constants;
-import com.hemebiotech.utils.Parser;
+import com.hemebiotech.utils.SymptomsUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +19,7 @@ public class Main {
 
     /**
      * Main method which will executes our application
-     * @param args String[] arguments
-     * @throws IOException Signals that an I/O exception of some sort has occurred
+     * @param args Optional arguments (String[])
      */
     public static void main(String[] args) {
 
@@ -32,7 +30,7 @@ public class Main {
 
             // Convert the ArrayList into a TreeMap, in order to have unique keys (symptoms) with values representing
             // the occurrences of the symptoms
-            Map<String, Integer> occurrences = Parser.countFrequencies(symptoms);
+            Map<String, Integer> occurrences = SymptomsUtils.countFrequencies(symptoms);
 
             // Write the output into a new file called result.out
             parser.writer(resultPath, occurrences);

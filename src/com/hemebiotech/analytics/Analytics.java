@@ -13,10 +13,10 @@ import java.util.Map;
  */
 public class Analytics implements IParser {
     /**
-     * Get symptoms from a file and return an ArrayList of String.
+     * Get symptoms from a file and return a list of strings.
      *
-     * @param filePath String
-     * @return ArrayList<String>
+     * @param filePath Path of a file (String)
+     * @return A list of symptoms (List<String>)
      */
     public List<String> reader(String filePath) {
         List<String> result = new ArrayList<>();
@@ -40,8 +40,8 @@ public class Analytics implements IParser {
     /**
      * Create or update a file from a given TreeMap
      *
-     * @param filePath String
-     * @param data TreeMap<String, Integer>
+     * @param filePath Relative path of a file (String)
+     * @param data Data to parse (Map<String, Integer>)
      */
     public void writer(String filePath, Map<String, Integer> data) {
 
