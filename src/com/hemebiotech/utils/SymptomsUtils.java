@@ -25,7 +25,7 @@ public class SymptomsUtils {
      *
      * @param data Data to be parsed (Map<String, Integer>)
      */
-    public static void displayCountFrequencies(Map<String, Integer> data) {
+    public static void logCountFrequencies(Map<String, Integer> data) {
         data.forEach((key, value) -> System.out.println("Frequency of " + key + " is " + value));
     }
 }

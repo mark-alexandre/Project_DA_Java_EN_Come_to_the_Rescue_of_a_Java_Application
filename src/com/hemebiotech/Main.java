@@ -1,6 +1,7 @@
 package com.hemebiotech;
 
 import com.hemebiotech.analytics.Analytics;
+import com.hemebiotech.analytics.IParser;
 import com.hemebiotech.utils.Constants;
 import com.hemebiotech.utils.SymptomsUtils;
 
@@ -25,12 +26,15 @@ public class Main {
 
         if(args.length == 0) {
             // Get an ArrayList of all symptoms
-            Analytics parser = new Analytics();
+            IParser parser = new Analytics();
             List<String> symptoms = parser.reader(filePath);
 
             // Convert the ArrayList into a TreeMap, in order to have unique keys (symptoms) with values representing
             // the occurrences of the symptoms
             Map<String, Integer> occurrences = SymptomsUtils.countFrequencies(symptoms);
+
+            // Log the result before writing it
+            SymptomsUtils.logCountFrequencies(occurrences);
 
             // Write the output into a new file called result.out
             parser.writer(resultPath, occurrences);
